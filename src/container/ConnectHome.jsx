@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import App from '../App';
+import Home from '../component/Home';
 import titleAction from '../actions/titleAction';
 
 // ConnectApp这里是数据容器，负责处理业务和数据。
@@ -20,6 +20,6 @@ const mapDispatchToProps = (dispatch) => ({
     delTitle: (key) => dispatch({type: titleAction.DEL, key})
 })
 
-let ContainerApp = connect(mapStateToProps, mapDispatchToProps)(App);
+let ContainerHome = connect(mapStateToProps, mapDispatchToProps)(Home);
 
-export default ContainerApp;
+export default ContainerHome;

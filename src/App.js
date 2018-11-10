@@ -1,29 +1,21 @@
 import React, { Component } from 'react';
 import './App.css';
+import ConnectHome from './container/ConnectHome';
+import About from './component/About';
+import {Route, Link} from 'react-router-dom'
 
 class App extends Component {
 
   render() {
-    const { list } = this.props.titleReducer;
-    const {addTitle, delTitle } = this.props;
     return (
       <div className="App">
-        <header className="App-header">
-        {
-          list.map(
-            (title, index) => (
-              <p key={index}>
-                <span>{title}</span>
-                <button onClick={() => delTitle(index)}>删除</button>
-              </p>
-            )
-          )
-        }
-        <p>
-          <input ref='input'/>
-          <button onClick={() => addTitle(this.refs.input.value)}>添加</button>
-        </p>
-        </header>
+        <div>
+          <Link to="/">主页</Link>
+          <Link to="/about">关于我们</Link>
+          <br />
+          <Route exact path="/" component={ConnectHome}></Route>
+          <Route exact path="/about" component={About}></Route>
+        </div>
       </div>
     );
   }
