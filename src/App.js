@@ -1,24 +1,40 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import titleAction from './actions/titleAction';
 
 class App extends Component {
+
+  addTitle() {
+    let titleInput = this.refs.titleInput;
+    if (titleInput.value.trim() === '') return;
+    let { dispatch } = this.props;
+    dispatch({type: titleAction.ADD, value: titleInput.value});
+    titleInput.value = "";
+  }
+  
+  delTitle(index) {
+    let { dispatch } = this.props;
+    dispatch({type: titleAction.DEL, value: index})
+  }
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+        {
+          this.props.store.list.map(
+            (title, index) => (
+              <p key={index}>
+                <span>{title}</span>
+                <button onClick={this.delTitle.bind(this, index)}>删除</button>
+              </p>
+            )
+          )
+        }
+        <p>
+          <input ref="titleInput"/>
+          <button onClick={this.addTitle.bind(this)}>添加</button>
+        </p>
         </header>
       </div>
     );
