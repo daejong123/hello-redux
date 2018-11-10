@@ -5,16 +5,16 @@ const initTitle = {
 }
 
 const reducer = (state = initTitle, action) => {
+    console.log('action ==>> ', action);
     switch(action.type) {
         case titleAction.ADD:
+            console.log(state, action);
             state.list = [...state.list, action.value];
-            return state;
+            return Object.assign({}, state);
         case titleAction.DEL:
-            const { list } = state;
-            const index = action.value;
-            list.splice(index, 1);
-            state.list = list;
-            return state;
+            console.log(state, action);
+            state.list.splice(action.key, 1);
+            return Object.assign({}, state);
         default:
             return state;
     }

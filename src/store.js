@@ -1,6 +1,11 @@
 import {createStore, combineReducers} from 'redux';
-import titleReducers from './reducers/titleReducers';
+import titleReducer from './reducers/titleReducer';
+import ageReducer from './reducers/ageReducer';
 
-const store = createStore(titleReducers);
+let reducers = combineReducers({
+    titleReducer,
+    ageReducer
+})
+const store = createStore(reducers);
 
 export default store;
