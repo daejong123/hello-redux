@@ -15,9 +15,9 @@ export default class Home extends Component {
                     {
                         list.map(
                             (title, index) => (
-                                <p key={index}>
-                                    <span>{title}</span>
+                                <p key={index} style={{fontSize:'20px', width: '200px', "text-align": 'left'}}>
                                     <Button type="primary" onClick={() => delTitle(index)}>删除</Button>
+                                    <span>{title}</span>
                                 </p>
                             )
                         )
